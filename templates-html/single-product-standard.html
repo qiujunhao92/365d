@@ -1,0 +1,445 @@
+<!-- wp:template-part {"slug":"header","theme":"woo-boost-dark","tagName":"header","className":"site-header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"right":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group"
+    style="padding-right:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+    <!-- wp:group {"style":{"spacing":{"padding":{"right":"2px","left":"2px"}}},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group" style="padding-right:2px;padding-left:2px"><!-- wp:woocommerce/store-notices /-->
+
+        <!-- wp:columns {"align":"wide"} -->
+        <div class="wp-block-columns alignwide"><!-- wp:column {"width":"512px"} -->
+            <div class="wp-block-column baseimgdesc">
+                <div id="gallary">
+                    <van-swipe style="position: relative;" ref="swipeArr" @change="onChange" :autoplay="0"
+                        :show-indicators="false" touchable>
+                        <van-swipe-item v-for="(item,index) in arr" :key="index" style="height:100%;margin:auto;">
+                            <van-image v-if="item.type=='image'" style="width:100%;" :src="item.url"></van-image>
+                            <div class="column" v-else style="height:100%;width:100%;background: #000;">
+                                <video :poster="item.poster" :src="item.url" style="width:100%" controls />
+                            </div>
+                        </van-swipe-item>
+                    </van-swipe>
+                    <div class="row" style="justify-content: flex-start;">
+                        <div @click="change(index)" v-for="(item,index) in arr" :key="index">
+                            <van-image v-if="item.type=='image'" class="listImages" :src="item.url"
+                                style="margin: 10px;"></van-image>
+                            <div v-else class="listImages column"
+                                style="margin:0 10px 10px 10px;" :style="'background:url('+item.poster+') no-repeat;background-size:cover;'">
+                                <van-icon name="play" size="20" color="#fff" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /wp:column -->
+
+            <!-- wp:column -->
+            <div class="wp-block-column">
+                <!-- wp:post-title {"level":1,"__woocommerceNamespace":"woocommerce/product-query/product-title"} /-->
+
+                <!-- wp:woocommerce/product-rating {"isDescendentOfSingleProductTemplate":true} /-->
+
+                <!-- wp:html -->
+                <p class="product__text inline-richtext cusSubtitle">THIS PRICE IS HALF OF TOTAL PRICE, WHEN IT IS
+                    FINISHED IN 7-10 DAYS, YOU CAN DO LAST PAYMENT.</p>
+                <!-- /wp:html -->
+
+                <!-- wp:woocommerce/product-price {"isDescendentOfSingleProductTemplate":true,"fontSize":"large"} /-->
+
+                <!-- wp:woocommerce/add-to-cart-form /-->
+
+                <!-- wp:image {"id":11144,"scale":"cover","sizeSlug":"full","linkDestination":"none","className":"deliveryImg"} -->
+                <figure class="wp-block-image size-full deliveryImg"><img
+                        src="https://img.365d4u.com/2024/07/delivery-tran.png" alt="" class="wp-image-11144"
+                        style="object-fit:cover" /></figure>
+                <!-- /wp:image -->
+
+                <!-- wp:html -->
+                <div data-docx-has-block-data="false" class="cus-support-detail">
+                    <div class="ace-line ace-line old-record-id-FKnwdPqEqoo4PGxmlWlcrhOhnwh"><span class="text-only"
+                            data-eleid="3">Deposit: 50% of the total cost (3 days for wax model creation, 7 days for
+                            production)</span></div>
+                    <div class="ace-line ace-line old-record-id-FKnwdPqEqoo4PGxmlWlcrhOhnwh"><span class="text-only"
+                            data-eleid="5">Completion: Final details updated, balance payment collected, and shipment
+                            arranged</span></div>
+                    <div class="ace-line ace-line old-record-id-FKnwdPqEqoo4PGxmlWlcrhOhnwh">
+                        <span class="text-only" data-eleid="4"></span><span class="text-only"
+                            data-eleid="7">Email:<span>&nbsp;</span></span>
+                        <a class="link rich-text-anchor __anchor-intercept-flag__ text-content-link emailcuslink"
+                            href="mailto:SUPPORT@CUSTOM365D.COM" data-eleid="8"
+                            data-mce-href="mailto:SUPPORT@CUSTOM365D.COM" contenteditable="false" target="_blank"
+                            rel="noopener">SUPPORT@CUSTOM365D.COM</a><span class="text-only"
+                            data-eleid="6"><span>&nbsp;</span></span>
+                    </div>
+                    <div class="ace-line ace-line old-record-id-FKnwdPqEqoo4PGxmlWlcrhOhnwh">
+                        <span class="text-only" data-eleid="10">You also can DM us via
+                            Instagram<span>&nbsp;</span></span><a
+                            class="link rich-text-anchor __anchor-intercept-flag__ text-content-link cinslink"
+                            href="https://www.instagram.com/custom365d/" data-eleid="11"
+                            data-mce-href="https://www.instagram.com/custom365d/" contenteditable="false"
+                            target="_blank" rel="noopener">@custom365d</a><span class="text-only"
+                            data-eleid="9"><span>&nbsp;</span></span>
+                    </div>
+                    <div class="ace-line ace-line old-record-id-FKnwdPqEqoo4PGxmlWlcrhOhnwh"><span class="text-only"
+                            data-eleid="13">Whatsapp: +16173097891</span></div>
+                </div>
+                <style>
+                    .cinslink,
+                    .emailcuslink {
+                        text-underline-offset: .3rem;
+                        text-decoration-thickness: .1rem;
+                    }
+
+                    .ace-line {
+                        padding: 10px 0;
+                        font: 18px Lato, sans-serif;
+                        line-height: 25px;
+                        color: #d7d7d7bc;
+                    }
+
+                    p.cusSubtitle {
+                        font: 14px Lato, sans-serif;
+                        line-height: 25px;
+                        color: #333;
+                    }
+
+                    div.woocommerce-tabs.wc-tabs-wrapper {
+                        margin-top: 40px;
+                    }
+
+                    .single-product div#tab-description.woocommerce-Tabs-panel--description.panel {
+                        margin-top: 10px;
+                    }
+
+                    .single-product ul.tabs.wc-tabs {
+                        display: block;
+                    }
+
+                    #tab-description.woocommerce-Tabs-panel--description>h2 {
+                        display: none;
+                    }
+
+                    .cusDescImg img {
+                        width: 100%;
+                    }
+
+                    .wp-container-core-columns-is-layout-1 .wp-block-woocommerce-product-image-gallery {
+                        max-width: 760px;
+                    }
+
+                    .is-layout-flex.wp-container-core-columns-is-layout-1 .wp-block-add-to-cart-form p.stock {
+                        display: none;
+                    }
+
+                    .wp-block-woocommerce-product-meta .taxonomy-product_cat {
+                        display: none;
+                    }
+
+                    figure.deliveryImg {
+                        text-align: center;
+                        margin-top: 10px;
+                    }
+
+                    .woocommerce form.variations_form table.variations tr td select {
+                        height: auto;
+                        padding: 10px 15px;
+                    }
+
+                    .reset_variations {
+                        margin-left: 15px;
+                    }
+
+                    .wp-block-woocommerce-product-image-gallery ol.flex-control-nav.flex-control-thumbs {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 10px 15px;
+                        padding: 0;
+                    }
+
+                    .wp-block-woocommerce-product-image-gallery ol.flex-control-nav.flex-control-thumbs {
+                        list-style-type: none;
+                    }
+
+                    .wp-block-woocommerce-product-image-gallery ol.flex-control-nav.flex-control-thumbs li::marker {
+                        content: "";
+                    }
+
+                    button.single_add_to_cart_button.button.alt.wp-element-button.disabled.wc-variation-selection-needed {
+                        opacity: 1 !important;
+                    }
+
+                    .ppc-button-wrapper #ppc-button-ppcp-gateway.ppcp-disabled {
+                        -webkit-filter: unset;
+                    }
+
+                    .paypalConq1>.cuspayb1 {
+                        padding: 0px 20px 5px 20px;
+                    }
+                </style>
+                <!-- /wp:html -->
+            </div>
+            <!-- /wp:column -->
+        </div>
+        <!-- /wp:columns -->
+
+        <!-- wp:woocommerce/product-details {"align":"wide","className":"is-style-minimal"} /-->
+
+        <!-- wp:woocommerce/related-products {"align":"wide"} -->
+        <div class="wp-block-woocommerce-related-products alignwide">
+            <!-- wp:query {"queryId":17,"query":{"perPage":4,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"title","author":"","search":"","exclude":[],"sticky":"","inherit":false},"namespace":"woocommerce/related-products","lock":{"remove":true,"move":true}} -->
+            <div class="wp-block-query">
+                <!-- wp:heading {"style":{"spacing":{"margin":{"top":"1rem","bottom":"1rem"}}}} -->
+                <h2 class="wp-block-heading" style="margin-top:1rem;margin-bottom:1rem">YOU MAY ALSO LIKE</h2>
+                <!-- /wp:heading -->
+
+                <!-- wp:post-template {"layout":{"type":"grid","columnCount":5},"__woocommerceNamespace":"woocommerce/product-query/product-template"} -->
+                <!-- wp:woocommerce/product-image {"imageSizing":"cropped","isDescendentOfQueryLoop":true} /-->
+
+                <!-- wp:post-title {"textAlign":"center","level":3,"isLink":true,"fontSize":"medium","__woocommerceNamespace":"woocommerce/product-query/product-title"} /-->
+
+                <!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true,"textAlign":"center","fontSize":"small","style":{"spacing":{"margin":{"bottom":"1rem"}}}} /-->
+
+                <!-- wp:woocommerce/product-button {"textAlign":"center","isDescendentOfQueryLoop":true,"fontSize":"small","style":{"spacing":{"margin":{"bottom":"1rem"}}}} /-->
+                <!-- /wp:post-template -->
+            </div>
+            <!-- /wp:query -->
+        </div>
+        <!-- /wp:woocommerce/related-products -->
+    </div>
+    <!-- /wp:group -->
+
+    <!-- wp:html -->
+    <style>
+        .jdgm-star {
+            color: #000 !important;
+        }
+
+        .curOptionTitle {
+            background: #000;
+            color: #fff;
+        }
+
+        .ccdesc {
+            color: #333;
+            font-family: inherit;
+        }
+        .cus-support-detail{
+         font-family: inherit;
+      }
+
+        .wp-element-button {
+            border-radius: 0;
+        }
+
+        .cinslink,
+        .emailcuslink {
+            color: #000
+        }
+
+        .ace-line .text-only {
+            color: #333;
+        }
+
+        .woocommerce-product-gallery__trigger {
+            display: none;
+        }
+
+        .deliveryImg {
+            background: #000;
+        }
+
+
+
+        .baseimgdesc {
+            margin: 0 30px 0 0 !important;
+            flex: 1.6 !important;
+        }
+
+        .baseimgdesc .listImages {
+            width: 100px;
+            height: 100px;
+        }
+        .bigTitle{
+            font-size: 24px;
+         }
+
+
+        .wp-block-woocommerce-related-products .wp-container-core-post-template-is-layout-1.wp-container-core-post-template-is-layout-1 {
+            grid-template-columns: repeat(4, minmax(0, 1fr))
+        }
+
+        @media (max-width:1366px) {
+            .wp-block-woocommerce-related-products .wp-container-core-post-template-is-layout-1.wp-container-core-post-template-is-layout-1 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+        }
+
+        @media (max-width:767px) {
+            .wp-block-woocommerce-related-products .wp-container-core-post-template-is-layout-1.wp-container-core-post-template-is-layout-1 {
+                grid-template-columns: auto;
+            }
+
+            .baseimgdesc {
+                margin: 0 0px !important;
+
+            }
+
+            .baseimgdesc .listImages {
+                width: 50px;
+                height: 50px;
+            }
+
+            .bigTitle {
+                font-size: 18px;
+            }
+
+        }
+
+        @media screen and (min-width: 990px) {
+            .single-product .wp-block-woocommerce-related-products.alignwide a:not(.wp-element-button) {
+                overflow: hidden;
+                white-space: nowrap;
+                width: 80%;
+                text-overflow: ellipsis;
+                margin-bottom: -20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .single-product ul.tabs.wc-tabs {
+                display: none;
+            }
+
+            /* 初始化隐藏所有内容 */
+            .single-product .woocommerce-tabs .panel {
+                display: none;
+            }
+
+            div#tab-description.woocommerce-Tabs-panel--description.panel {
+                display: none;
+            }
+
+            .single-product .woocommerce-tabs .accordion-title {
+                cursor: pointer;
+                padding: 10px;
+                margin: 5px 0;
+                border-bottom: 1px solid #ddd;
+                font-weight: 700;
+                font-size: 16px;
+            }
+
+            .innerCusContent {
+                display: none;
+            }
+
+            .hide {
+                display: none;
+            }
+
+            .spanright {
+                float: right;
+            }
+        }
+    </style>
+    <script>
+        var hadExec = false;
+        function changeTabs() {
+            if (window.innerWidth <= 768) {
+                if (hadExec) return;
+                hadExec = true;
+                var titles = document.querySelectorAll('.woocommerce-tabs .wc-tab');
+                titles.forEach(function (title, index) {
+                    var accordionTitle = document.createElement('div');
+                    var allDesc = document.querySelectorAll('.woocommerce-tabs .wc-tabs>li>a');
+                    accordionTitle.className = 'accordion-title accordion-title' + index;
+                    var templateJs = '<div class="curBasePanel">' + allDesc[index].innerText.trim()
+                        + '<span class="spanright arrow-right" ><svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">'
+                        + '<g clip-path="url(#clip0_4263_34997)"><path d="M5.62683 7.96972L9.74145 3.60013C9.99641 3.32758 10.0668 2.93194' + ' 9.93487 2.58027C9.7942 2.22859 9.47769 2 9.11722 2L0.887984 2C0.527515 2 0.211006 2.22859 0.0703355'
+                        + ' 2.58027C0.0263759 2.69456 -3.57406e-08 2.81765 -4.11209e-08 2.94074C-5.18815e-08 3.18691 0.0879194 3.42429 0.263758' + ' 3.60013L4.37838 7.96972C4.54542 8.14555 4.77401 8.24226 5.0026 8.24226C5.23999 8.25106 5.45978 8.14555' + ' 5.62683 7.96972Z" fill="white"></path></g><defs><clipPath id="clip0_4263_34997"><rect width="10" height="10"'
+                        + ' fill="white" transform="matrix(-4.37114e-08 1 1 4.37114e-08 0 0)"></rect></clipPath></defs>'
+                        + '</svg></span><span class="spanright arrow-bottom hide"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"'
+                        + ' xmlns="http://www.w3.org/2000/svg">'
+                        + ' <g clip-path="url(#clip0_4263_34997)"><path d="M5.62683 2.03028L9.74145 6.39987C9.99641 6.67242 10.0668 7.06806'
+                        + ' 9.93487 7.41973C9.7942 7.77141 9.47769 8 9.11722 8L0.887984 8C0.527515 8 0.211006 7.77141 0.0703355'
+                        + ' 7.41973C0.0263759 7.30544 -3.57406e-08 7.18235 -4.11209e-08 7.05926C-5.18815e-08 6.81309 0.0879194 6.57571 0.263758' + ' 6.39987L4.37838 2.03028C4.54542 1.85445 4.77401 1.75774 5.0026 1.75774C5.23999 1.74894 5.45978 1.85445 5.62683'
+                        + ' 2.03028Z" fill="white"></path></g><defs><clipPath id="clip0_4263_34997"><rect width="10" height="10" fill="white"' + ' transform="translate(0 10) rotate(-90)"></rect></clipPath></defs></svg></span></div>';
+                    accordionTitle.innerHTML = templateJs;
+                    title.parentNode.insertBefore(accordionTitle, title);
+                });
+                var panels = document.querySelectorAll('.woocommerce-tabs .panel');
+                panels.forEach(function (panel, index) {
+                    panel.style.display = 'none';
+                    var accordionTitle = document.querySelectorAll('.wp-block-woocommerce-product-details .accordion-title')[index];
+                    accordionTitle.addEventListener('click', function () {
+                        if (panel.style.display === 'none') {
+                            showArrow(this, true);
+                            panel.style.display = 'block';
+                        } else {
+                            showArrow(this, false);
+                            panel.style.display = 'none';
+                        }
+                    });
+                });
+
+            }
+        }
+        function showArrow(parentNode, bShowUp) {
+            var arrowUpNode = parentNode.querySelector('.arrow-right'),
+                arrowDownNode = parentNode.querySelector('.arrow-bottom');
+            if (bShowUp) {
+                if (!arrowUpNode.classList.contains('hide')) {
+                    arrowUpNode.classList.add('hide');
+                }
+                if (arrowDownNode.classList.contains('hide')) {
+                    arrowDownNode.classList.remove('hide');
+                }
+            } else {
+                if (arrowUpNode.classList.contains('hide')) {
+                    arrowUpNode.classList.remove('hide');
+                }
+                if (!arrowDownNode.classList.contains('hide')) {
+                    arrowDownNode.classList.add('hide');
+                }
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            changeTabs();
+            var links = document.querySelectorAll('.single-product .wp-block-woocommerce-related-products.alignwide a');
+            links.forEach(function (link) {
+                if (!link.title) { // check link title
+                    link.title = link.innerText;
+                }
+                var baseDescTitle = document.querySelector('.accordion-title0');
+                if (baseDescTitle) {
+                    showArrow(baseDescTitle, true);
+                }
+            });
+        });
+
+        const { createApp, ref, watch, onMounted } = Vue
+        const gallary = createApp({
+            setup() {
+                console.log(homepageObj.product)
+                const swipeArr = ref(null)
+                const indexCurrent = ref(0)
+                const arr = ref(homepageObj.product.images)
+                const change = (index) => {
+                    swipeArr.value.swipeTo(index, {
+                        immediate: false
+                    });
+                }
+                const onChange = (e) => {
+                    indexCurrent.value = e
+                }
+                return { arr, indexCurrent, change, onChange, swipeArr }
+            }
+        })
+        gallary.use(vant)
+        gallary.use(vant.Lazyload);
+        gallary.mount('#gallary');
+    </script>
+    <!-- /wp:html -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"woo-boost-dark","tagName":"footer","className":"site-footer"} /-->

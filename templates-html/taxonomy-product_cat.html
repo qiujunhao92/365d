@@ -1,0 +1,220 @@
+<!-- wp:template-part {"slug":"header","theme":"woo-boost-dark","tagName":"header","className":"site-header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"right":"var:preset|spacing|40","left":"var:preset|spacing|40"}}},"className":"basemain","layout":{"type":"constrained"}} -->
+<main class="wp-block-group basemain"
+    style="padding-right:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)">
+    <!-- wp:group {"style":{"spacing":{"padding":{"right":"2px","left":"2px"}}},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-group" style="padding-right:2px;padding-left:2px"><!-- wp:spacer {"height":"20px"} -->
+        <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+        <!-- /wp:spacer -->
+
+        <!-- wp:woocommerce/breadcrumbs /-->
+
+        <!-- wp:woocommerce/store-notices /-->
+
+        <!-- wp:html -->
+        <div id="catList">
+            <div class="row catListForCatPage" style="justify-content: flex-start;flex-wrap:wrap;">
+                <div v-for="(item,index) in list" :key="index" class="pointer" @click="jumpCat(item.url)">{{item.name}}
+                </div>
+            </div>
+        </div>
+        <style>
+            ul li h6.wp-block-post-title {
+                margin-bottom: 0 !important;
+            }
+
+            .woocommerce .woocommerce-breadcrumbb {
+                margin-bottom: 0 !important;
+            }
+
+            #catList {
+                margin: 10px 0;
+            }
+
+            .catListForCatPage div {
+                margin: 0 20px 10px 0;
+                cursor: pointer;
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .catListForCatPage div:hover {
+                text-decoration: underline;
+            }
+
+            li h6 a {
+                text-align: left;
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            :where(body .is-layout-grid) {
+                gap: 0 !important;
+            }
+
+            .wp-block-woocommerce-product-price .wc-block-components-product-price {
+                font-size: 10px !important;
+                color: #333!important;
+                font-weight: 500!important;
+                text-align: left;
+            }
+            .woocommerce-Price-amount bdi{
+                font-weight: unset;
+            }
+
+            @media (min-width:768px) {
+                .woocommerce ul.products-block-post-template {
+                    justify-content: flex-start;
+                }
+
+                .woocommerce ul.products-block-post-template li.product {
+                    flex: 0 0 23% !important;
+                    max-width: 23% !important;
+                    margin: 1% !important;
+                }
+            }
+        </style>
+        <script>
+            let currentPageurl = location.href
+            const { createApp, ref, watch, onMounted } = Vue
+            const catList = createApp({
+                setup() {
+                    const homeObj = ref({})
+                    const list = ref([])
+
+                    const jumpCat = (url) => {
+                        location.href = url
+                    }
+
+                    onMounted(() => {
+                        homeObj.value = homepageObj
+                        console.log(window.innerWidth)
+                        if (window.innerWidth > 768) {
+                            console.log('大')
+                            document.querySelector('#catList').style = "background: #fff;padding-top: 10px;"
+                        } else {
+                            console.log('小')
+                            document.querySelector('#catList').style = "position: sticky;top:70px;z-index:1;background: #fff;padding-top: 10px;"
+                        }
+                        if (currentPageurl.indexOf("custom") >= 0) {
+                            //custom
+                            list.value = homeObj.value.customMenu
+                        } else {
+                            //collection
+                            list.value = homeObj.value.collectionMenu
+                        }
+                    })
+
+                    return {
+                        homepageObj, list, jumpCat
+                    }
+                }
+            })
+            catList.use(vant)
+            catList.use(vant.Lazyload);
+            catList.mount('#catList');
+        </script>
+        <!-- /wp:html -->
+
+        <!-- wp:group {"align":"wide","className":"filterList","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+        <div class="wp-block-group alignwide filterList"><!-- wp:woocommerce/product-results-count /-->
+
+            <!-- wp:woocommerce/catalog-sorting /-->
+        </div>
+        <!-- /wp:group -->
+
+        <!-- wp:query {"queryId":3,"query":{"perPage":10,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"title","author":"","search":"","exclude":[],"sticky":"","inherit":true,"__woocommerceAttributes":[],"__woocommerceStockStatus":["instock","outofstock","onbackorder"]},"namespace":"woocommerce/product-query","align":"wide"} -->
+        <div class="wp-block-query alignwide">
+            <!-- wp:post-template {"className":"products-block-post-template","layout":{"type":"grid","columnCount":3},"__woocommerceNamespace":"woocommerce/product-query/product-template"} -->
+            <!-- wp:woocommerce/product-image {"imageSizing":"thumbnail","isDescendentOfQueryLoop":true} /-->
+
+            <!-- wp:post-title {"textAlign":"center","level":6,"isLink":true,"style":{"spacing":{"margin":{"bottom":"0.75rem","top":"0"}}},"fontSize":"medium","__woocommerceNamespace":"woocommerce/product-query/product-title"} /-->
+
+            <!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true,"textAlign":"center"} /-->
+
+            <!-- wp:woocommerce/product-button {"textAlign":"center","isDescendentOfQueryLoop":true,"fontSize":"small"} /-->
+            <!-- /wp:post-template -->
+
+            <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+            <!-- wp:query-pagination-previous /-->
+
+            <!-- wp:query-pagination-numbers /-->
+
+            <!-- wp:query-pagination-next /-->
+            <!-- /wp:query-pagination -->
+
+            <!-- wp:query-no-results -->
+            <!-- wp:spacer {"height":"20px"} -->
+            <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+            <!-- /wp:spacer -->
+
+            <!-- wp:paragraph {"align":"center","placeholder":"Add text or blocks that will display when a query returns no results."} -->
+            <p class="has-text-align-center">nothing here</p>
+            <!-- /wp:paragraph -->
+            <!-- /wp:query-no-results -->
+        </div>
+        <!-- /wp:query -->
+    </div>
+    <!-- /wp:group -->
+</main>
+<!-- /wp:group -->
+
+<style>
+    h6 a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    .categoryContent {
+        margin: 20px 10px;
+    }
+
+    .categoryListBody {
+        margin-top: 10px;
+    }
+
+    .wp-block-post.product {
+        background: #fff;
+    }
+
+    .wp-block-button.wc-block-components-product-button {
+        margin: 10px auto;
+    }
+
+    .wp-block-post-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    .wp-container-core-group-is-layout-1.wp-container-core-group-is-layout-1 {
+        justify-content: left !important;
+    }
+
+    .wp-block-group .woocommerce.wc-block-catalog-sorting .woocommerce-ordering select {
+        color: unset
+    }
+</style>
+<script>
+    if (currentPageurl.indexOf("custom") >= 0) {
+        let cateListProductArrDom = document.querySelectorAll('.product')
+        //console.log(cateListProductArrDom)
+        cateListProductArrDom.forEach(i => {
+            //i.querySelector("h3").style.display="none"
+            //i.querySelector(".wp-block-woocommerce-product-price").style.display="none"
+            //i.querySelector(".wc-block-components-product-button").style.display="none"
+        })
+    } else {
+        //document.querySelector('.filterList').style.display = "block"
+    }
+</script>
+
+<!-- wp:spacer {"height":"20px"} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:template-part {"slug":"footer","theme":"woo-boost-dark","tagName":"footer","className":"site-footer"} /-->

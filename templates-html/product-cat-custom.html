@@ -1,0 +1,225 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"},"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group"
+    style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:html -->
+
+    <!-- 内容 -->
+    <div id="cusPage">
+
+        <!-- 轮播 -->
+        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+            <van-swipe-item
+                v-for="(item, index) in (header.screenWidth <= 750 ? homepageObjData.subCategoryList.mobile_subBanner : homepageObjData.subCategoryList.pc_subBanner)"
+                :key="index">
+                <van-image @click="jump(item.url)" fit="fill" lazy-load height="100%" width="100%" :src="item.image" style="display: flex;" />
+            </van-swipe-item>
+        </van-swipe>
+        <!-- mobile -->
+        <template v-if="header.screenWidth <= 750">
+            <div class="pcLengthDiv" style="margin:10px auto;">
+
+                <div v-for="(item,index) in homepageObjData.subCategoryList.categories" :key="index">
+                    <div class="row" style="justify-content:space-between;margin:20px 10px;">
+                        <div class="level2Title">{{item.name}}</div>
+                        <div class="row priceTitle">MORE<van-icon name="arrow" /></div>
+                    </div>
+                    <div style="width:calc(100vw - 20px);padding:0 10px;justify-content: flex-start;flex-wrap: wrap;" class="row">
+                        <div style="width:calc((100vw - 30px)/2);" @click="jump(item1.url)" class="column"
+                            style="justify-content: space-between;" :class="index1%2?'':'odd'"
+                            v-for="(item1,index1) in item.products" :key="index1">
+                            <van-image lazy-load :id="'imageAnimation'+index+'-'+index1" style="width:100%" :src="item1.image"></van-image>
+                            <div class="one-row productTitle" style="margin-bottom: 10px;">{{item1.title}}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+        <!-- pc -->
+        <div v-else v class="pcDiv" style="width:calc(100vw - 20px);">
+            <div class="pcLengthDiv" style="margin:0 auto;">
+
+                <div v-for="(item,index) in homepageObjData.subCategoryList.categories" :key="index">
+                    <div class="row" style="justify-content:space-between;margin:0 10px;">
+                        <div class="bigTitle">{{item.name}}</div>
+                        <div class="row bigTitleInfo">MORE<van-icon name="arrow" /></div>
+                    </div>
+                    <div style="width:100%;justify-content: flex-start;flex-wrap: wrap;" class="row">
+                        <div @click="jump(item1.url)" class="column"
+                            style="justify-content: space-between;width:23%;height:23%;margin:0 1%;"
+                            v-for="(item1,index1) in item.products" :key="index1">
+                            <van-image lazy-load :id="'imageAnimation'+index+'-'+index1" :src="item1.image"
+                                width="100%"></van-image>
+                            <div class="one-row productTitle" style="margin-bottom: 10px;">{{item1.title}}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        const { createApp, ref, watch, onMounted } = Vue
+
+        console.log(homepageObj)
+        const cusPage = createApp({
+            setup() {
+
+                const homepageObjData = ref(homepageObj)
+                const header = ref({
+                    screenWidth: window.innerWidth
+                })
+
+
+                onMounted(() => {
+
+                })
+
+                const jump = (url) => {
+                    console.log(url)
+                    if(!url){
+					    return
+				    }
+                    location.href = url
+                }
+
+                return {
+                    jump,
+                    homepageObjData, header
+                }
+            }
+        })
+        cusPage.use(vant)
+        cusPage.use(vant.Lazyload);
+        cusPage.mount('#cusPage');
+
+        function scrollToElementWithOffset(selector, offset = 0) {
+            const element = document.querySelector(selector);
+            if (element) {
+                const elementPosition = element.getBoundingClientRect().top;  // 元素相对于视口的距离
+                const offsetPosition = window.pageYOffset + elementPosition - offset;  // 计算偏移后的位置
+
+                // 平滑滚动到目标位置
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'  // 平滑滚动
+                });
+            }
+        }
+
+        window.onload = function () {
+            console.log('yo wussup! want something glittering? ')
+            //window.scrollTo(0, 0);
+            // document.querySelector('#loadingDiv').style.visibility = "hidden";
+        }
+    </script>
+    <style>
+        .my-swipe .van-swipe-item {
+            text-align: center;
+        }
+
+        @media (max-width:750px) {
+            .my-swipe .van-swipe-item {
+                line-height: calc(100vw);
+                height: calc(100vw)
+            }
+
+            .mobileCat {
+                margin: 20px 10px;
+            }
+
+            .block {
+                position: relative;
+
+                .imgH5 {
+                    width: 100%;
+                    background: rgba(255, 255, 255, 0.2);
+                    position: absolute;
+                    color: #fff;
+                    text-align: center;
+                    bottom: 0;
+                }
+            }
+
+            .productIndex {
+                width: calc((100vw - 30px)/2);
+                margin-bottom: 10px;
+
+                .imgCollection {
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .odd {
+                margin-right: 10px;
+            }
+        }
+
+        @media (min-width:751px) {
+            main {
+                margin-top: 100px;
+            }
+
+            .my-swipe .van-swipe-item {
+                height: calc(100vw * 348 / 930)
+            }
+
+            .product-swipe .van-swipe-item {
+                text-align: center;
+            }
+
+            .pcProductDiv {
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                .one-row {
+                    text-align: left;
+                }
+            }
+
+            .colorBtn {
+                padding: 4px;
+                border-radius: 16px;
+                margin: 0 8px;
+
+                div {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 10px;
+                }
+            }
+
+            .bigTitle {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            .bigTitleInfo {
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+
+            .productTitle {
+                margin: 10px 0 0 0;
+                text-align: center;
+            }
+
+            .priceTitle {
+                margin-bottom: 10px;
+            }
+
+            .nextAndPrev {
+                margin-top: 40px;
+                width: 100%;
+            }
+        }
+    </style>
+    <!-- /wp:html -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"woo-boost-dark","tagName":"footer","className":"site-footer"} /-->

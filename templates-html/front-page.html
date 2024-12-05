@@ -1,0 +1,402 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"0","bottom":"0","left":"0","right":"0"},"margin":{"top":"0","bottom":"0"},"blockGap":"0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group"
+	style="margin-top:0;margin-bottom:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">
+	<div id="frontPage">
+		<!-- 轮播 -->
+		<van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+			<van-swipe-item
+				v-for="(item, index) in (header.screenWidth <= 750 ? homepageObjData.mainHomeFeature.banner.mobileBanner : homepageObjData.mainHomeFeature.banner.pcBanner)"
+				:key="index">
+				<van-image @click="jump(item.url)" fit="fill" lazy-load height="100%" width="100%" :src="item.image" style="display: flex;" />
+			</van-swipe-item>
+		</van-swipe>
+		<!-- mobile -->
+		<template v-if="header.screenWidth <= 750">
+			<div class="row mobileCat" style="justify-content: space-between;">
+				<div class="level2Title">{{ homepageObjData.mainHomeFeature.custom.title }}</div>
+				<div @click="jump(homepageObjData.mainHomeFeature.custom.link)" class="row priceTitle">{{
+					homepageObjData.mainHomeFeature.custom.more }}<van-icon style="margin-left: 10px;" name="arrow" />
+				</div>
+			</div>
+
+			<!-- custom -->
+			<div>
+				<div class="row" style="justify-content: space-between;padding:0px 10px 10px 10px;">
+					<div @click="jump(homepageObjData.mainHomeFeature.cusMobile.big.url)" class="column block"
+						:style="'background:url(' + homepageObjData.mainHomeFeature.cusMobile.big.image + ') no-repeat'"
+						style="height:240px;width:calc((100vw - 30px)/2);background-size: 100% 100%;">
+						<div class="imgH5 productTitle">{{ homepageObjData.mainHomeFeature.cusMobile.big.title }}</div>
+					</div>
+					<div class="column" style="justify-content: space-between;height:240px;">
+						<div @click="jump(homepageObjData.mainHomeFeature.cusMobile.normal[0].url)" class="column block"
+							:style="'background:url(' + homepageObjData.mainHomeFeature.cusMobile.normal[0].image + ') no-repeat'"
+							style="height:115px;width:calc((100vw - 30px)/2);background-size: 100% 100%;">
+							<div class="imgH5 productTitle">{{ homepageObjData.mainHomeFeature.cusMobile.normal[0].title
+								}}</div>
+						</div>
+						<div @click="jump(homepageObjData.mainHomeFeature.cusMobile.normal[1].url)" class="column block"
+							:style="'background:url(' + homepageObjData.mainHomeFeature.cusMobile.normal[1].image + ') no-repeat'"
+							style="height:115px;width:calc((100vw - 30px)/2);background-size: 100% 100%;">
+							<div class="imgH5 productTitle">{{ homepageObjData.mainHomeFeature.cusMobile.normal[1].title
+								}}</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="width:calc(100vw - 20px);margin:0 10px;justify-content: space-between;">
+					<div @click="jump(homepageObjData.mainHomeFeature.cusMobile.normal[2].url)" class="column block"
+						:style="'background:url(' + homepageObjData.mainHomeFeature.cusMobile.normal[2].image + ') no-repeat'"
+						style="height:115px;width:calc((100vw - 30px)/2);background-size: 100% 100%;">
+						<div class="imgH5 productTitle">{{ homepageObjData.mainHomeFeature.cusMobile.normal[2].title }}
+						</div>
+					</div>
+					<div @click="jump(homepageObjData.mainHomeFeature.cusMobile.normal[3].url)" class="column block"
+						:style="'background:url(' + homepageObjData.mainHomeFeature.cusMobile.normal[3].image + ') no-repeat'"
+						style="height:115px;width:calc((100vw - 30px)/2);background-size: 100% 100%;">
+						<div class="imgH5 productTitle">{{ homepageObjData.mainHomeFeature.cusMobile.normal[3].title }}
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row mobileCat" style="justify-content: space-between;">
+				<div class="level2Title">{{ homepageObjData.mainHomeFeature.collection.title }}</div>
+				<div @click="jump(homepageObjData.mainHomeFeature.collection.link)" class="row priceTitle">{{
+					homepageObjData.mainHomeFeature.collection.more }}<van-icon style="margin-left: 10px;"
+						name="arrow" /></div>
+			</div>
+
+			<!-- collection -->
+			<div class="row" style="flex-wrap: wrap;justify-content: flex-start;padding:0px 10px 10px 10px;">
+				<div @click="jump(item.url)" class="productIndex column" :class="index % 2 == 0 ? 'odd' : 'ddo'"
+					v-for="(item, index) in homepageObjData.homePageCollectionList" v-bind:key="index">
+
+					<van-image lazy-load :src="item.currentImage" class="imgCollection"></van-image>
+					<!-- <van-swipe v-else :show-indicators="false" style="height:calc((100vw - 30px)/2);width:100%;"
+						:autoplay="false">
+						<van-swipe-item v-for="(i, id) in item.color_images" :key="id"
+							style="height: calc((100vw - 30px)/2);width:calc((100vw - 30px)/2);">
+							<van-image :src="i.image" class="imgCollection"></van-img>
+						</van-swipe-item>
+					</van-swipe> -->
+
+					<div style="width: 100%;">
+						<div class="one-row productTitle">{{ item.title }}</div>
+						<div class="priceTitle" v-if="item.price">${{ item.price }}</div>
+						<div class="priceTitle" v-else>NO PRICE</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</template>
+		<!-- pc -->
+		<div v-else v class="pcDiv" style="width:calc(100vw - 20px);">
+			<div class="pcLengthDiv" style="margin:0 auto;">
+				<div class="column">
+					<div class="bigTitle">{{homepageObjData.mainHomeFeature.custom.title}}</div>
+					<div class="bigTitleInfo" @click="jump(homepageObjData.mainHomeFeature.custom.link)">
+						{{homepageObjData.mainHomeFeature.custom.view_all}}</div>
+					<div style="width:100%;">
+						<van-swipe ref="swipe1" class="product-swipe" :autoplay="0" indicator-color="white">
+							<van-swipe-item class="pcProductDiv row" v-for="(item,index) in pcCustomList" :key="index">
+								<div @click="jump(item1.url)" class="column"
+									style="justify-content: space-between;width:23%;height:23%;margin:0 1%;"
+									v-for="(item1,index1) in item.arr" :key="index1">
+									<van-image @mouseover="changeImage(index,index1)"
+										@mouseout="resetImage(index,index1)" :id="'imageAnimation'+index+'-'+index1"
+										:src="item1.currentImage" width="100%"></van-image>
+									<div class="one-row productTitle" style="margin-bottom: 10px;">{{item1.title}}</div>
+								</div>
+							</van-swipe-item>
+						</van-swipe>
+					</div>
+					<div class="row nextAndPrev">
+						<van-icon @click="prevSwipe1" color="#999" size="24" style="margin-right: 10%;"
+							name="arrow-left"></van-icon>
+						<van-icon @click="nextSwipe1" color="#999" size="24" name="arrow"></van-icon>
+					</div>
+				</div>
+				<div class="column">
+					<div class="bigTitle">{{homepageObjData.mainHomeFeature.collection.title}}</div>
+					<div class="bigTitleInfo" @click="jump(homepageObjData.mainHomeFeature.collection.link)">
+						{{homepageObjData.mainHomeFeature.collection.view_all}}</div>
+					<div style="width:100%;">
+						<van-swipe ref="swipe2" class="product-swipe" :autoplay="0">
+							<van-swipe-item class="pcProductDiv row" v-for="(item,index) in pcCollectionList"
+								:key="index">
+								<div @click="jump(item1.url)" class="column"
+									style="justify-content: space-between;width:23%;height:23%;margin:0 1%;cursor:auto;"
+									v-for="(item1,index1) in item.arr" :key="index1">
+
+
+									<van-image v-if="item1.color_images.length==0" lazy-load :src="item1.currentImage"
+										width="100%" height="100%"></van-image>
+
+									<template v-else>
+										<van-image class="animate__animated animate__fadeInLeftBig" style="position: relative;" lazy-load :src="item1.color_images[item1.index].image" width="100%"
+											height="100%">
+											<div @click.stop="stopJump" class="row"
+												style="position: absolute;z-index: 1;color:#333;width:100%;bottom:0px;padding:20px 0;">
+												<div @click.stop="chooseColor(index,index1,index3)"
+													v-for="(item3,index3) in item1.color_images" :key="index3"
+													class="colorBtn"
+													:style="item3.selected?'border:2px solid #d7d7d7;':''">
+													<div class="column" :style="'background: '+item3.color"></div>
+												</div>
+											</div>
+										</van-image>
+									</template>
+
+									<div class="one-row productTitle">{{item1.title}}</div>
+									<div v-if="item1.price" class="one-row priceTitle">${{item1.price}}</div>
+									<div v-else class="one-row priceTitle">NO PRICE</div>
+								</div>
+							</van-swipe-item>
+						</van-swipe>
+					</div>
+					<div class="row nextAndPrev">
+						<van-icon @click="prevSwipe2" color="#999" size="24" style="margin-right: 10%;"
+							name="arrow-left"></van-icon>
+						<van-icon @click="nextSwipe2" color="#999" size="24" name="arrow"></van-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->
+
+<script>
+	const { createApp, ref, watch, onMounted } = Vue
+	//console.log("front", homepageObj)
+	const front = createApp({
+		setup() {
+			const homepageObjData = ref({
+				mainHomeFeature: {
+					banner: {},
+					custom: {},
+					collection: {},
+					cusMobile: {
+						big: [],
+						normal: [{}, {}, {}, {}, {}, {}]
+					}
+				}
+			})
+			const header = ref({
+				screenWidth: window.innerWidth
+			})
+
+			const pcCustomList = ref([])
+			const pcCollectionList = ref([])
+
+			const swipe1 = ref(null)
+			const swipe2 = ref(null)
+			const prevSwipe1 = () => {
+				swipe1.value.prev()
+			}
+			const nextSwipe1 = () => {
+				swipe1.value.next()
+			}
+			const prevSwipe2 = () => {
+				swipe2.value.prev()
+			}
+			const nextSwipe2 = () => {
+				swipe2.value.next()
+			}
+			onMounted(() => {
+
+				const size = 8
+				const result = []
+				const result1 = []
+
+				homepageObj.homePageCollectionList.forEach(i => {
+					i.index = 0
+					if (i.color_images.length != 0) {
+						i.color_images.forEach(j => {
+							j.selected = false
+						})
+						i.color_images[0].selected = true
+					}
+				})
+
+				homepageObjData.value = homepageObj
+
+				const homePageCustomList = homepageObj.homePageCustomList.slice(0, 8)
+				const homePageCollectionList = homepageObj.homePageCollectionList.slice(0, 8)
+
+				for (let i = 0; i < homePageCustomList.length; i += size) {
+					result.push({
+						arr: homePageCustomList.slice(i, i + size)
+					});
+				}
+				for (let i = 0; i < homePageCollectionList.length; i += size) {
+					result1.push({
+						arr: homePageCollectionList.slice(i, i + size)
+					});
+				}
+				pcCustomList.value = result
+				pcCollectionList.value = result1
+				console.log(result1)
+
+			})
+
+			const jump = (url) => {
+				console.log(url)
+				if(!url){
+					return
+				}
+				location.href = url
+			}
+
+			const changeImage = (index, index1) => {
+				return
+				let image = document.getElementById('imageAnimation' + index + '-' + index1);
+				image.style.opacity = '0.6'; // 渐变隐藏当前图片
+				setTimeout(() => {
+					pcCustomList.value[index].arr[index1].currentImage = 'https://www.aporro.com/cdn/shop/products/C200567CY20.jpg?v=1719283582&width=1124' //this.list[index].arr[index1].image1
+					image.style.opacity = '1'; // 渐变显示新图片
+				}, 150)
+			}
+			const resetImage = (index, index1) => {
+				return
+				let image = document.getElementById('imageAnimation' + index + '-' + index1);
+				image.style.opacity = '0.6'; // 渐变隐藏当前图片
+				setTimeout(() => {
+					pcCustomList.value[index].arr[index1].currentImage = pcCustomList.value[index].arr[index1].image
+					image.style.opacity = '1'; // 渐变显示新图片
+				}, 150)
+			}
+
+			const chooseColor = (index, index1, index2) => {
+				//console.log('itemSwipe-'+index+index1)
+				pcCollectionList.value[index].arr[index1].color_images.forEach(i => {
+					i.selected = false
+				})
+				pcCollectionList.value[index].arr[index1].color_images[index2].selected = true
+				pcCollectionList.value[index].arr[index1].index = index2
+				console.log(pcCollectionList.value[index].arr[index1].index, index, index1, index2)
+			}
+			const stopJump = () => {
+				return
+			}
+
+			return {
+				chooseColor, stopJump,
+				swipe1, prevSwipe1, nextSwipe1, swipe2, prevSwipe2, nextSwipe2,
+				changeImage, resetImage,
+				pcCustomList, pcCollectionList,
+				jump,
+				homepageObjData, header
+			}
+		}
+	})
+	front.use(vant)
+	front.use(vant.Lazyload);
+	front.mount('#frontPage');
+</script>
+
+<style>
+	.my-swipe .van-swipe-item {
+		text-align: center;
+	}
+
+	@media (max-width:750px) {
+		.my-swipe .van-swipe-item {
+			line-height: calc(100vw);
+			height: calc(100vw)
+		}
+
+		.mobileCat {
+			margin: 20px 10px;
+		}
+
+		.block {
+			position: relative;
+
+			.imgH5 {
+				width: 100%;
+				background: rgba(255, 255, 255, 0.1);
+				position: absolute;
+				color: #fff;
+				text-align: center;
+				bottom: 0;
+			}
+		}
+
+		.productIndex {
+			width: calc((100vw - 30px)/2);
+			margin-bottom: 10px;
+
+			.imgCollection {
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		.odd {
+			margin-right: 10px;
+		}
+	}
+
+	@media (min-width:751px) {
+		main {
+			margin-top: 100px;
+		}
+
+		.my-swipe .van-swipe-item {
+			height: calc(100vw * 348 / 930)
+		}
+
+		.product-swipe .van-swipe-item {
+			text-align: center;
+		}
+
+		.pcProductDiv {
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+			.one-row {
+				text-align: center;
+			}
+		}
+
+		.colorBtn {
+			padding: 4px;
+			border-radius: 16px;
+			margin: 0 8px;
+
+			div {
+				cursor: pointer;
+				width: 20px;
+				height: 20px;
+				border-radius: 10px;
+			}
+		}
+
+		.bigTitle {
+			margin-top: 40px;
+		}
+
+		.bigTitleInfo {
+			margin-bottom: 40px;
+		}
+
+		.productTitle {
+			margin: 10px 0 0 0;
+		}
+
+		.priceTitle {
+			margin-bottom: 10px;
+		}
+
+		.nextAndPrev {
+			margin-top: 40px;
+			width: 100%;
+		}
+	}
+</style>

@@ -1,0 +1,323 @@
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/vant@4/lib/index.css" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
+<div id="loadingDiv" class="bigTitleInfo" style="overflow-x: hidden;position: fixed;width:calc(100vw);height:calc(100vh + 30px);background: #fff;z-index: 102;margin-top: -30px;">
+    <div style="margin:0 auto;text-align: center;margin-top: calc(50vh);">LOADING...</div>
+</div>
+<div id="header" style="position: sticky; top: 0px; z-index: 101; width: calc(0px + 100vw);">
+    <div class="header">
+        <!-- 手机 -->
+        <div v-if="screenWidth < 750" class="mobileDiv row">
+            <img @click="jump('/')" class="logo" src="https://img.365d4u.com/2024/10/20241018-115813-1.png" />
+            <div @click="jump('/search')" class="search row productTitle"><van-icon name="search" style="margin-right: 10px;margin-left: 5px;"></van-icon><div>YO WASSUP!</div></div>
+            <div class="row">
+                <van-icon @click="jump('/my-account/')" class="icon" color="#fff" size="18" name="contact-o" />
+                <van-icon @click="jump('/cart')" class="icon" color="#fff" size="18" name="cart-o" />
+            </div>
+        </div>
+        <!-- pc -->
+        <div v-else class="pcDiv row">
+            <div class="pcLengthDiv row">
+                <div class="row" style="visibility: hidden;">
+                    <van-icon class="pcIcon" size="20" name="search" />
+                    <van-icon class="pcIcon" size="20" name="contact-o" />
+                    <van-icon class="pcIcon" size="20" name="cart-o" />
+                </div>
+                <div class="row logoCenter">
+                    <div @click="showMenu(0)" style="text-align: right;" class="column">
+                        <div style="width:20px;height:3px;background: #fff;"></div>
+                        <div class="catFont" style="padding:5px 0;font-size: 14px;">CUSTOM</div>
+                        <div style="width:20px;height:3px;" :style="type == 0 ? 'background: #000;' : ''"></div>
+                    </div>
+                    <img @click="jump('/')" class="logo" src="https://img.365d4u.com/2024/11/20241018-115813-1-1-1.png" />
+                    <div @click="showMenu(1)" style="text-align: left;" class="column">
+                        <div style="width:20px;height:3px;background: #fff;"></div>
+                        <div class="catFont" style="padding:5px 0;font-size: 14px;">COLLECTION</div>
+                        <div style="width:20px;height:3px;" :style="type == 1 ? 'background: #000;' : ''"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <van-icon @click="jump('/search')" class="pcIcon" size="20" name="search"></van-icon>
+                    <van-icon @click="jump('/my-account/')" class="pcIcon" size="20" name="contact-o"></van-icon>
+                    <van-icon @click="jump('/cart')" class="pcIcon" size="20" name="cart-o"></van-icon>
+                </div>
+            </div>
+        </div>
+        <!-- 弹出 -->
+        <van-popup @close="onClose" class="indexPopOut" v-model:show="show" position="top"
+            style="margin-top: 100px;border-top: 1px solid #efefef;padding: 40px;">
+            <div class="row" style="width:100%;max-width: 1500px;margin:0 auto;">
+                <div @click="jump(item.url)" class="menu catFont" v-for="(item, index) in menuArr" :key="index">{{ item.name }}</div>
+            </div>
+        </van-popup>
+    </div>
+</div>
+<!-- 引入 Vue 和 Vant 的 JS 文件 -->
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/vant@4/lib/vant.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/less@4.1.3"></script>
+<script src="https://fastly.jsdelivr.net/npm/@vant/touch-emulator"></script>
+
+<script type="module">
+    const { createApp, ref, watch, onMounted } = Vue
+    const header = createApp({
+        setup() {
+            const menuData = ref(homepageObj)
+            const show = ref(false)
+            const menuArr = ref([])
+            const type = ref()
+            const showLoading=ref(true)
+            const indexUrl='http://localhost/'
+
+            console.log(location.href)
+
+            const onClose = () => {
+                document.querySelector('#header').style.position='sticky'
+                show.value = false
+                type.value = -1
+                setTimeout(()=>{
+                    document.querySelector('.indexPopOut').style.display ='none';
+                },280)
+            }
+
+            const showMenu = (t) => {
+                //console.log(window.scrollY)
+                if(window.scrollY>0){
+                    document.querySelector('#header').style.position='fixed'
+                }else{
+                    document.querySelector('#header').style.position='sticky'
+                }
+                const fun = () => {
+                    if (t == 0) {
+                        menuArr.value = menuData.value.customMenu
+                    } else if (t == 1) {
+                        menuArr.value = menuData.value.collectionMenu
+                    }
+                    type.value = t
+                    show.value = true
+                }
+                if (show.value) {
+                    onClose()
+                    setTimeout(() => {
+                        fun()
+                    }, 300)
+                } else {
+                    fun()
+                }
+            }
+
+            const screenWidth = ref(window.innerWidth)
+            const url = ref(location.href)
+
+            const setView = () => {
+                if (url.value != indexUrl) {
+                    if (screenWidth.value > 750) {
+                        console.log('pc')
+                    } else {
+                        console.log('change header')
+                        document.querySelector('.mobileDiv').style.backgroundColor = '#fff';
+                        document.querySelectorAll('.icon')[0].style.color = "#000"
+                        document.querySelectorAll('.icon')[1].style.color = "#000"
+                        document.querySelectorAll('.logo')[0].src = "https://img.365d4u.com/2024/11/20241018-115813-1-1-1.png"
+                    }
+
+                } else {
+                    if (screenWidth.value <= 750) {
+                        document.querySelector('#header').style.position = 'fixed';
+                    }
+                }
+                document.querySelector('#loadingDiv').style.display='none'
+            }
+
+            onMounted(() => {
+                console.log('onMounted')
+                //showLoading.value=false
+                setView()
+            })
+
+            window.addEventListener('resize', () => {
+                screenWidth.value = window.innerWidth
+                setView()
+            })
+
+            window.addEventListener('scroll', () => {
+                if (url.value != indexUrl) {
+                    return
+                }
+                if (screenWidth.value > 750) {
+                    return
+                }
+                const scrollTop = window.scrollY; // 获取滚动的距离
+                const windowHeight = window.innerHeight; // 获取窗口的高度
+                const maxScroll = window.innerWidth / 2; // 设定背景颜色和透明度完全变化的滚动距离
+
+                // 计算滚动进度（0 到 1 之间）
+                const progress = Math.min(scrollTop / maxScroll, 1);
+
+                // 初始颜色: 橙色 (255, 103, 0) 和 初始透明度 1
+                const startColor = { r: 255, g: 255, b: 255, a: 0 }; // a 代表 alpha (透明度)
+                // 目标颜色: 蓝色 (0, 0, 255) 和 目标透明度 0
+                const endColor = { r: 255, g: 255, b: 255, a: 0.99 };
+
+                const a = startColor.a + (endColor.a - startColor.a) * progress;
+
+                // 设置新的背景颜色和透明度
+                const newColor = `rgba(255, 255, 255, ${a})`;
+                const box = document.querySelector('.mobileDiv');
+                box.style.backgroundColor = newColor;
+                //console.log(progress)
+                if (progress >= 0.5) {
+                    document.querySelectorAll('.icon')[0].style.color = "#000"
+                    document.querySelectorAll('.icon')[1].style.color = "#000"
+                    document.querySelectorAll('.logo')[0].src = "https://img.365d4u.com/2024/11/20241018-115813-1-1-1.png"
+                } else {
+                    document.querySelectorAll('.icon')[0].style.color = "white"
+                    document.querySelectorAll('.icon')[1].style.color = "white"
+                    document.querySelectorAll('.logo')[0].src = "https://img.365d4u.com/2024/10/20241018-115813-1.png"
+                }
+            })
+            const jump=(url)=>{
+                console.log(url)
+                location.href=url
+            }
+
+            return {
+                showLoading,
+                onClose, showMenu,jump,
+                menuData, show, menuArr, type, screenWidth
+            }
+        }
+    })
+    header.use(vant)
+    header.mount('#header');
+    window.onload=()=>{
+        document.querySelector('#loadingDiv').style.display='none'
+    }
+</script>
+
+<style>
+    .row {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .column {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .one-row {
+        white-space: nowrap !important;
+        /* 不换行 */
+        overflow: hidden !important;
+        /* 隐藏溢出的内容 */
+        text-overflow: ellipsis !important;
+        /* 超出部分显示省略号 */
+        width: 100% !important;
+        /* 设置宽度 */
+    }
+
+    .two-row {
+        display: -webkit-box;
+        /* 作为弹性伸缩盒子 */
+        -webkit-line-clamp: 2;
+        /* 限制显示的行数为2行 */
+        -webkit-box-orient: vertical;
+        /* 设定为垂直排列 */
+        overflow: hidden;
+        /* 隐藏溢出的内容 */
+        text-overflow: ellipsis;
+        /* 超出部分显示省略号 */
+        width: 100%;
+        /* 设置宽度 */
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+        /* 隐藏滚动条 */
+    }
+
+    #header {
+        margin-top: 0;
+        --wp--preset--font-family--hind:Lato, sans-serif;
+    }
+
+    .wp-block-contact-form-7-contact-form-selector .wpcf7-submit{
+        background: #000!important;
+        color: #fff !important;
+    }
+
+    @media (max-width:750px) {
+        .logo {
+            width: 50px;
+            height: 50px;
+            padding: 6px;
+            margin-left: 10px;
+        }
+
+        .icon {
+            margin: 0 10px;
+        }
+
+        .search {
+            width: 50%;
+            padding: 0 10px 0 10px;
+            background: rgba(245, 245, 245, 0.9);
+            justify-content: flex-start;
+            height: 50px;
+            border-radius: 25px;
+            font-family: var(--wp--preset--font-family--hind);
+        }
+
+        .mobileDiv {
+            width: calc(100vw - 20px);
+            padding: 10px;
+            justify-content: space-between;
+        }
+    }
+
+    @media (min-width:751px) {
+        .van-overlay {
+            margin-top: 100px
+        }
+
+        .menu {
+            margin: 0 20px;
+        }
+
+        .pcDiv {
+            background-color: #fff;
+            justify-content: center;
+            width: calc(100vw - 20px);
+            padding: 10px;
+
+            .pcLengthDiv {
+                justify-content: space-between;
+                width: 100%;
+                max-width: 1500px;
+
+                .logo {
+                    width: 80px;
+                    height: 80px;
+                    margin: 0px 40px;
+                }
+
+                .pcIcon {
+                    margin: 0 10px;
+                }
+
+                .logoCenter>div {
+                    width: 100px;
+                }
+            }
+        }
+    }
+</style>
