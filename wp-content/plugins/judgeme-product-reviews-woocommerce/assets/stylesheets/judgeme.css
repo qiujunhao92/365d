@@ -1,0 +1,31 @@
+#adminmenu .menu-top.toplevel_page_judgeme img {
+  width: 20px;
+  height: auto;
+  padding-top: 7px;
+}
+
+.judgeme-exporter .response, .home-page-sychronize-products-container .product-sync-response {
+  line-height: 2;
+  margin-top: 15px;
+}
+
+.judgeme-exporter .response .updated {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.judgeme-exporter .response .updated a {
+  text-decoration: none;
+}
+
+.judgeme-exporter .result {
+  display: none;
+}
+
+.judgeme-default-widget-placement ul {
+  list-style: disc inside;
+}
+
+.judgeme-default-widget-placement ul li span {
+  font-weight: bold;
+}

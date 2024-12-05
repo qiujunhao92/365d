@@ -1,0 +1,927 @@
+$brandColor: #339999;
+$borderColor: #919EAB;
+$primaryButtonColor: #1565C0;
+
+.judgeme__woocommerce-plugin-container {
+  .home-page__header-welcome-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    align-items: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  .home-page__header-container {
+    display:flex;
+    flex-direction: column;
+  }
+
+  .home-page__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    color: #333333;
+  }
+
+  .home-page__open-jdgm-btn{
+    padding: 10px;
+    text-align: center;
+    background: $primaryButtonColor;
+    border: 1px solid $primaryButtonColor;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: white;
+  }
+
+  .home-page__advanced-tab-sync-product, .home-page__advanced-tab-reset-product-sync, .home-page__advanced-tab-clear-shop-token {
+    padding: 6px;
+    text-align: center;
+    background: $brandColor;
+    border: 1px solid $brandColor;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color:white;
+  }
+
+  .home-page__advanced-tab-clear-shop-token {
+    margin-top: 8px;
+  }
+
+  .home-page__open-jdgm-btn:hover, .home-page__header-rate-us-button:hover {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .home-page__open-jdgm-btn:focus, .home-page__header-rate-us-button:focus {
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  .home-page__jdgm-intro-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: 'Roboto', sans-serif;
+    color: #637381;
+  }
+
+  .home-page__header-jdgm-chat-logo {
+    width: 60px;
+    height: 60px;
+    margin-right: 16px;
+  }
+
+  .home-page__header-contact-us-container p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .home-page__header-contact-us-container {
+    display: flex;
+    padding: 16px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    /* small shadow */
+
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background: white;
+  }
+
+  .home-page__header-jdgm-info-inner-container {
+    padding: 16px;
+  }
+
+  .home-page__header-rate-us-button {
+      background: #FFFFFF;
+      border: 1px solid $primaryButtonColor;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      color: $primaryButtonColor;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20%;
+      padding: 8px 12px 8px 12px;
+  }
+
+  .home-page__header-rate-us-container {
+    display: flex;
+    margin-top: 12px;
+    padding: 16px;
+    align-items: center;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background: white;
+  }
+
+  .home-page__header-rate-us-text {
+    width: 70%;
+    margin: 0px 16px 0px 18px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .home-page-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-page__general-tab, .home-page__faq-tab, .home-page__advanced-tab, .home-page__customer-support-tab {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #637381;
+  }
+
+  .home-page__nav-container .home-page__customer-support-tab {
+    display: none;
+  }
+
+  .home-page__faq-container {
+    background-color: white;
+  }
+
+  .nav  a.active {
+    box-shadow: none;
+    border-bottom: 3px solid $brandColor;
+    color: $brandColor;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: $brandColor;
+  }
+
+  .nav-item {
+    width: 106px;
+  }
+
+  .home-page__nav-container {
+    margin-top: 16px;
+  }
+
+  .home-page__quick-installation {
+    margin-bottom: 24px;
+  }
+
+  .home-page__quick-installation-title, .home-page__judge-me-ideas-title, .home-page__advanced-tab-titles {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 12px;
+  }
+
+  .home-page__quick-installation-widget-info p {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+
+  .home-page__quick-installation-widget-info {
+    margin-bottom: 24px;
+  }
+
+  .home-page__general-container, .home-page__faq-container, .home-page__advanced-tab-container {
+    background: white;
+    padding: 24px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  .home-page__quick-installation-review-widget-title, .home-page__quick-installation-collection-page-title, .home-page__quick-installation-product-page-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: $brandColor;
+  }
+
+  .home-page__quick-installation-widgets-inner-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .home-page__jdgm-intro-container a:hover, .home-page__jdgm-intro-container a:visited{
+    text-decoration: none;
+    color: white;
+  }
+
+  .home-page__install-widget-install-widget-yourself-link-container {
+    color: $primaryButtonColor;
+    margin-bottom: 4px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 27px;
+    height: 27px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .home-page-divider {
+    border: 1px solid $borderColor;
+  }
+
+  .home-page__install-widget-yourself-installation-guide-container {
+    padding: 24px 24px 4px 24px;
+    background: #F9F9F9;
+    display: none;
+    margin-top: 24px;
+  }
+
+  .home-page__install-widget-yourself, .home-page__judge-me-features-container {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .home-page__install-widget-yourself a, .home-page__judge-me-features-container a {
+    color: $primaryButtonColor;
+  }
+
+  .home-page__install-widget-yourself-installation-guide-example {
+    padding: 12px;
+    background: white;
+  }
+
+  .home-page__install-widget-yourself-installation-title {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+  }
+
+  .home-page__divider {
+    margin: 24px 0px 24px 0px;
+  }
+
+  .home-page__install-widget-yourself-installation-guide-container hr {
+    border-top: 1px solid $borderColor;
+  }
+
+  .home-page__judge-me-ideas{
+    margin-top: 32px;
+  }
+
+  .home-page__judge-me-features {
+    background: #F9F9F9;
+    border: 1px solid #F9F9F9;
+    box-sizing: border-box;
+    border-radius: 2px;
+  }
+
+  .home-page__judge-me-subtitle {
+    height: 24px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #637381;
+  }
+
+  .home-page__general-container a {
+    color: $primaryButtonColor;
+  }
+
+  .home-page__judge-me-features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .home-page__judge-me-set-up-reviews {
+    border-top: 4px solid $brandColor;
+  }
+
+  .home-page__judge-me-features-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .home-page__judge-me-info {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 21px;
+    list-style-type: disc;
+    margin: 12px 26px 0px 30px;
+  }
+
+  .home-page__judge-me-info li {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+  }
+
+  .home-page__judge-me-info li {
+    margin-bottom: 24px;
+  }
+
+  .home-page__judge-me-engage-with-users {
+    border-top: 4px solid #43467F;
+  }
+
+  .home-page__judge-me-improve-workflow {
+    border-top: 4px solid #FF9800;
+  }
+
+  .home-page__customer-support-advanced-tab {
+    opacity: 0;
+  }
+
+  .home-page__quick-installation-widgets-container label.btn-default {
+    background-color: #637381;
+    color: white;
+    padding-left: 12px;
+  }
+
+  .caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-left: 4px;
+    border-bottom: 5px solid $primaryButtonColor;
+  }
+
+  .home-page__install-widget-install-widget-yourself-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .flip {
+    transform: rotate(-180deg);
+  }
+
+  .home-page__header-faq-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .home-page__header-faq-text-container p {
+    margin-bottom: 0;
+  }
+
+  .home-page__header-faq-text {
+    margin-bottom: 4px;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  a.nav-link {
+    box-shadow: none;
+  }
+
+  .home-page__install-widget-yourself-installation-guide-example, .home-page__install-widget-yourself-installation-guide-example, .home-page__install-widget-yourself-installation-guide-example {
+    display: flex;
+    align-items: center;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: fit-content;
+  }
+
+  code {
+    background: none;
+  }
+
+  .switch {
+    display: inline-block;
+    height: 22px;
+    position: relative;
+    width: 40px;
+  }
+
+  label.switch {
+    margin-bottom: 0;
+  }
+
+  .switch input {
+    display:none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+
+  .slider:before {
+    background-color: #fff;
+    content: "";
+    height: 19px;
+    width: 18px;
+    left: 3px;
+    bottom: 2px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+
+  input:checked + .slider {
+    background-color: $brandColor;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .home-page__quick-installation-product-page-badge-toggle, .home-page__quick-installation-collection-page-badge-toggle, .home-page__quick-installation-review-widget-toggle {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #919EAB;
+    border-radius: 2px;
+    width: 200px;
+  }
+
+  .advanced-tab__cache-clearing-toggle{
+    padding: 8px;
+    border: 1px solid #919EAB;
+    border-radius: 2px;
+    width: 280px;
+  }
+
+  .home-page__advanced-tab-clear-cache-option-container{
+    margin-top: 24px;
+  }
+
+  span.toggle-handle {
+    background-color: white;
+    border-radius: 20px;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+  }
+
+
+  .switch input {
+    display:none;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #637381 ;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input.success:checked + .slider {
+    background-color: $brandColor;
+    border-radius: 10px;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .home-page__quick-installation-product-page-install-uninstall-text-toggle, .home-page__quick-installation-review-widget-install-uninstall-text-toggle, .home-page__quick-installation-collection-page-badge-install-uninstall-text-toggle {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: $brandColor;
+  }
+
+  .home-page__install-widget-yourself-copy-and-paste-icon {
+    cursor: pointer;
+  }
+
+  .home-page-sychronize-products-container {
+    margin-bottom: 24px;
+  }
+
+  .home-page_terms-and-policy {
+    margin-top: 8px;
+  }
+
+  /* Overide font awesome styles */
+
+  .far.fa-clone {
+    color: $borderColor;
+  }
+
+  .home-page__header-jdgm-info-container a {
+    color: $primaryButtonColor;
+  }
+
+  /* Roboto Font */
+
+  /* cyrillic-ext */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  }
+  /* cyrillic */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  /* greek-ext */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+  }
+  /* greek */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+  }
+  /* vietnamese */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  .home-page__faq-post {
+    display: flex;
+  }
+
+  .home-page__first-faq-post .home-page__faq-info, .home-page__second-faq-post .home-page__faq-info {
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .home-page__first-faq-post .home-page__faq-answer, .home-page__second-faq-post .home-page__faq-answer {
+    display: block;
+  }
+
+  .home-page__faq-title {
+    font-size: 14px;
+    color: $brandColor;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .home-page__faq-icon {
+    padding-top: 4px;
+    color: $brandColor;
+  }
+
+  .home-page__faq-info {
+    margin-left: 16px;
+    border-bottom: none;
+    margin-bottom: 16px;
+  }
+
+  .home-page__faq-answer {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    color: #333333;
+    padding: 8px 0px 12px 0px;
+    display: none;
+
+    a {
+      color: $primaryButtonColor;
+    }
+
+     code{
+      white-space: normal;
+    }
+
+    pre {
+      white-space: normal;
+      word-break: break-all;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    li {
+      margin-left: 20px;
+    }
+  }
+
+
+
+  .home-page__advanced-tab-container {
+    background-color: white;
+
+    p {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  /* Media Queries */
+
+  /* Mobile  */
+
+  @media only screen and (max-device-width : 600px) {
+    .home-page-container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .home-page__jdgm-intro-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .home-page__header-jdgm-info-container, .home-page__header-rate-us-container {
+      margin-top: 20px;
+    }
+
+    .home-page__judge-me-ideas {
+      margin-top: 42px;
+    }
+
+    .home-page__judge-me-set-up-reviews, .home-page__judge-me-engage-with-users, .home-page__quick-installation-review-widget, .home-page__quick-installation-collection-page, .home-page__quick-installation-product-page {
+      margin-bottom: 20px;
+    }
+
+    .home-page__judge-me-subtitle {
+      margin-bottom: 32px;
+    }
+
+    .home-page__open-jdgm-btn {
+      display: flex;
+      justify-content: center;
+    }
+
+    .home-page__header-container {
+      margin-top: 10px;
+    }
+
+    .home-page__title  {
+      justify-content: center;
+    }
+
+    .home-page__advanced-tab-reset-product-sync {
+      margin-top: 6px;
+    }
+  }
+
+  @media only screen and (min-device-width : 600px) and (max-device-width : 780px) {
+    .home-page-container {
+      max-width: 570px;
+      margin: 0 auto;
+    }
+
+    .home-page__jdgm-intro-container {
+      text-align: center;
+    }
+
+    .home-page__title {
+      justify-content: center;
+    }
+
+    .home-page__jdgm-intro-container {
+      margin-top: 20px;
+    }
+
+    .home-page__header-welcome-container {
+      margin: 12px 0px 12px 0px;
+    }
+
+  }
+
+  /* Ipad */
+
+  @media only screen and (min-device-width : 769px) and (max-device-width : 1024px)  {
+
+    .home-page-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .home-page__header-welcome-container {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 12px;
+    }
+
+    .home-page__jdgm-intro-container {
+      margin-left: 24px;
+    }
+
+    .home-page__quick-installation-review-widget, .home-page__quick-installation-collection-page, .home-page__quick-installation-product-page {
+      margin-bottom: 12px;
+    }
+
+    .home-page__judge-me-set-up-reviews, .home-page__judge-me-engage-with-users {
+      margin-bottom: 20px;
+    }
+
+    .home-page__jdgm-intro-text {
+      margin-bottom: 10px;
+    }
+
+    .home-page__header-container {
+      margin-top: 10px;
+    }
+
+  }
+
+  /* Desktop */
+
+  @media only screen and (min-device-width : 1025px) {
+    .home-page-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .home-page__jdgm-intro-container {
+      margin-left: 24px;
+    }
+
+    .home-page__header-welcome-container {
+      margin-right: 12px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .home-page__header-container {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+    }
+
+    .home-page__header-contact-us-container, .home-page__header-rate-us-container  {
+      height: 50%;
+    }
+
+    .home-page__header-jdgm-info-container {
+      width: 85%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .home-page__quick-installation {
+      width: 95%;
+    }
+
+    .home-page__judge-me-engage-with-users, .home-page__judge-me-set-up-reviews, .home-page__judge-me-improve-workflow {
+      width: 49%;
+      margin-top: 20px;
+    }
+
+    .home-page__jdgm-intro-text {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+// Overide Woocommerce Styles
+
+#wpwrap {
+  background: #E5E5E5;
+
+  #wpbody-content {
+    float: none;
+  }
+
+  #dolly {
+    display: none;
+  }
+
+  #wpcontent {
+    padding-right: 10px;
+  }
+
+}
+
+#wpfooter {
+  display: none;
+}

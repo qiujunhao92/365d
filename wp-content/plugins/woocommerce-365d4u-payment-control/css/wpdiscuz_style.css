@@ -1,0 +1,34 @@
+#wpdcom{
+    max-width:100%!important;
+    padding:0 20px!important;
+}
+ #wpdcom .wpd-form-wrap .wpdiscuz-item.wc_name-wrapper{
+    display:none;
+}
+ #wpdcom .wpd-form-wrap .wpdiscuz-item.wc_email-wrapper{
+    margin-top:15px;
+}
+ #wpdcom .wpd-form-wrap .wpd-login{
+    display:none;
+}
+body.category .site-sidebar form.wp-block-search,
+.single-post .site-sidebar form.wp-block-search{
+    display:none;
+}
+body.category .wp-block-image .cuspayb1 img,
+.single-post .wp-block-image .cuspayb1 img{
+    vertical-align:inherit;
+}
+#wpdcom .wmu-comment-attachments .wmu-attached-images{
+    border-bottom-width: 0;
+}
+@media screen and (max-width: 500px) {
+    #wpdcom .ql-toolbar>button.ql-spoiler, #wpdcom .ql-toolbar>button.ql-sourcecode{
+        display: none!important;
+    }
+}
+#wpdcom .wpd-thread-head .wpdiscuz-user-settings,
+#wpdcom .wpd-thread-filter .wpdf-reacted,
+#wpdcom .wpd-thread-filter .wpdf-hottest{
+    display: none!important;
+}

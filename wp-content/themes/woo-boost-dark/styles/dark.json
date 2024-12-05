@@ -1,0 +1,59 @@
+{
+	"version": 2,
+	"title": "Light Color",
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"palette": [
+				{
+					"slug": "base",
+					"color": "#fff",
+					"name": "Base"
+				},
+				{
+					"slug": "contrast",
+					"color": "#595959",
+					"name": "Contrast"
+				},
+				{
+					"slug": "primary",
+					"color": "#111",
+					"name": "Primary"
+				},
+				{
+					"slug": "secondary",
+					"color": "#00a0d2",
+					"name": "Secondary"
+				},
+				{
+					"slug": "tertiary",
+					"color": "#F6F6F6",
+					"name": "Tertiary"
+				},
+				{
+					"slug": "transparent",
+					"color": "transparent",
+					"name": "Transparent"
+				},
+				{
+					"slug": "secondary-bg",
+					"color": "#edededed",
+					"name": "Secondary Background"
+				},
+				{
+					"slug": "table-line",
+					"color": "rgba(0,0,0,.1)",
+					"name": "Table Line"
+				},
+				{
+					
+					"slug": "theme",
+					"color": "#097770",
+					"name": "Theme"
+
+				}
+			]
+		}
+	}
+}
