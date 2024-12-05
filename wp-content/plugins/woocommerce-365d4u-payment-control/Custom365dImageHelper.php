@@ -14,4 +14,35 @@ function cus_get_intermediate_size($data, $post_id, $size )
     }
     return $data;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 add_filter('image_get_intermediate_size', 'cus_get_intermediate_size', 10, 3);

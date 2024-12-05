@@ -127,11 +127,7 @@ if (!class_exists('Custom365dChatToolsFooter')) {
                jq('.cus365d4-Trigger .cus365d4-Trigger__Icon').removeClass('cusHide');
                 jq('.Vtl-LiveChatChannelsWidget__Content').addClass('cusHide'); 
            }
-       }
-       //disable context-menu
-       document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+       }      
    </script>
 FOOTER;
         }
